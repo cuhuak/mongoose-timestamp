@@ -70,7 +70,7 @@ function timestampsPlugin(schema, options) {
             schema.add(dataObj);
         }
         schema.pre('save', function(next) {
-            if (!this[createdAt]) {
+            if (!this[createdAt] && this.isNew) {
                 var newDate = new Date;
                 if (createdAt) this[createdAt] = newDate;
                 if (updatedAt) this[updatedAt] = newDate;
